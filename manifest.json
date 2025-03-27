@@ -1,0 +1,60 @@
+{
+  "name": "SAT Crack - SAT Prep & Practice",
+  "short_name": "SAT Crack",
+  "description": "A comprehensive SAT preparation app with practice questions, progress tracking, and personalized learning",
+  "start_url": "/SAT_Crack/index.html",
+  "scope": "/SAT_Crack/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f0f9ff",
+  "theme_color": "#8a5cf6",
+  "categories": ["education", "learning", "test prep"],
+  "screenshots": [
+    {
+      "src": "images/screenshot-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Home screen of SAT Crack"
+    },
+    {
+      "src": "images/screenshot-2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Practice questions in SAT Crack"
+    }
+  ],
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Daily Question",
+      "short_name": "Daily",
+      "description": "Open today's daily SAT question",
+      "url": "/SAT_Crack/daily.html",
+      "icons": [{ "src": "images/icon-daily-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Practice",
+      "short_name": "Practice",
+      "description": "Start a practice session",
+      "url": "/SAT_Crack/practice.html",
+      "icons": [{ "src": "images/icon-practice-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

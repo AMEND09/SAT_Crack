@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SAT Crack - Learn & Practice</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8a5cf6">
+    <meta name="description" content="An app for SAT preparation">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    
+    <!-- iOS specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SAT Crack">
+    <link rel="apple-touch-startup-image" href="images/splash-screen.png">
+    
+    <!-- Prevent phone number detection -->
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Critical CSS for immediate rendering -->
+    <style>
+        /* Critical path CSS for initial render */
+        body {
+            background: linear-gradient(to bottom right, #eef2ff, #faf5ff, #fce7f3);
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="js/cache-utils.js" as="script">
+    <link rel="preload" href="js/content-loader.js" as="script">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Stylesheets (loaded with low priority) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/loading.css" media="print" onload="this.media='all'">
+    
+    <!-- Performance monitoring scripts - Load first to track other resources -->
+    <script src="js/performance-monitor.js"></script>
+    
+    <!-- Critical scripts that should load early -->
+    <script src="js/cache-utils.js"></script>
+    <script src="js/content-loader.js"></script>
+    <script src="js/loaders.js"></script>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 min-h-screen">
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loader"></div>
+        <p id="loading-text" class="mt-4 text-purple-700">Loading...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md px-4 py-3 fixed top-0 w-full z-10">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">SAT Crack</a>
+            <div>
+                <span id="streak-counter" class="inline-flex items-center px-2 py-1 bg-amber-100 text-amber-800 rounded-lg mr-2">
+                    <span class="text-amber-500 mr-1">🔥</span>
+                    <span class="streak-count">0</span>
+                </span>
+                <a href="profile.html" id="profile-button" class="w-8 h-8 bg-purple-200 rounded-full flex items-center justify-center">
+                    <span class="text-purple-700 font-medium text-sm"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto pt-20 pb-24 px-4">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner bg-white rounded-xl shadow-md p-4 mb-6">
+            <h1 class="text-lg font-semibold" id="welcome-header">Welcome back!</h1>
+            <p class="text-gray-600 text-sm">Continue practicing to improve your SAT score.</p>
+            <div class="mt-3 h-2 bg-gray-200 rounded-full">
+                <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" style="width: 0%"></div>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                <span>Daily goal: 0%</span>
+                <span>0 questions today</span>
+            </div>
+        </div>
+
+        <!-- Continue Section -->
+        <h2 class="text-md font-semibold mb-3">Continue Learning</h2>
+        <div class="continue-section mb-6 overflow-x-auto no-scrollbar">
+            <div class="flex space-x-4">
+                <a href="practice.html?topic=algebra" class="bg-white rounded-lg shadow-md min-w-[200px] flex-shrink-0 overflow-hidden">
+                    <div class="bg-blue-100 h-1.5">
+                        <div class="bg-blue-500 h-full" style="width: 0%"></div>
+                    </div>
+                    <div class="p-3">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-3">
+                                <span>📐</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-sm">Algebra</h3>
+                                <p class="text-xs text-gray-500">0% complete</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="practice.html?topic=reading" class="bg-white rounded-lg shadow-md min-w-[200px] flex-shrink-0 overflow-hidden">
+                    <div class="bg-green-100 h-1.5">
+                        <div class="bg-green-500 h-full" style="width: 0%"></div>
+                    </div>
+                    <div class="p-3">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 mr-3">
+                                <span>📚</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-sm">Reading</h3>
+                                <p class="text-xs text-gray-500">0% complete</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="practice.html?topic=writing" class="bg-white rounded-lg shadow-md min-w-[200px] flex-shrink-0 overflow-hidden">
+                    <div class="bg-amber-100 h-1.5">
+                        <div class="bg-amber-500 h-full" style="width: 0%"></div>
+                    </div>
+                    <div class="p-3">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 mr-3">
+                                <span>✏️</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-sm">Writing</h3>
+                                <p class="text-xs text-gray-500">0% complete</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Explore Topics -->
+        <h2 class="text-md font-semibold mb-3">Explore Topics</h2>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <a href="topics.html?section=math" class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-2">
+                    <span>🧮</span>
+                </div>
+                <h3 class="font-medium text-sm text-center">Math</h3>
+            </a>
+            <a href="topics.html?section=english" class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-2">
+                    <span>📖</span>
+                </div>
+                <h3 class="font-medium text-sm text-center">English</h3>
+            </a>
+            <a href="practice.html?mode=daily" class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mb-2">
+                    <span>📅</span>
+                </div>
+                <h3 class="font-medium text-sm text-center">Daily Challenge</h3>
+            </a>
+            <a href="practice.html?mode=random" class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 mb-2">
+                    <span>🎲</span>
+                </div>
+                <h3 class="font-medium text-sm text-center">Random Practice</h3>
+            </a>
+        </div>
+
+        <!-- Achievements Section -->
+        <h2 class="text-md font-semibold mb-3">Your Achievements</h2>
+        <div class="achievements-section bg-white rounded-lg shadow-md p-4 flex items-center justify-between mb-6">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 mr-3">
+                    <span>🏆</span>
+                </div>
+                <div>
+                    <h3 class="font-medium text-sm">Math Master</h3>
+                    <p class="text-xs text-gray-500">Solve 20 math problems</p>
+                </div>
+            </div>
+            <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                <span class="text-gray-500 text-xs">0/20</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bg-white shadow-lg px-4 py-3 fixed bottom-0 w-full flex justify-around items-center">
+        <a href="index.html" class="flex flex-col items-center text-purple-600">
+            <span class="text-lg">🏠</span>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+        <a href="topics.html" class="flex flex-col items-center text-gray-500">
+            <span class="text-lg">📚</span>
+            <span class="text-xs mt-1">Topics</span>
+        </a>
+        <a href="practice.html" class="flex flex-col items-center text-gray-500">
+            <span class="text-lg">🎓</span>
+            <span class="text-xs mt-1">Practice</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-500">
+            <span class="text-lg">👤</span>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <script>
+        // Start performance monitoring
+        if (window.PerformanceMonitor) {
+            window.PerformanceMonitor.recordPageLoad('home');
+        }
+        
+        // Check for cached content first before loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configure content loader
+            if (window.ContentLoader) {
+                window.ContentLoader.optimizeCurrentPage();
+                
+                // Preload topics page content since it's likely to be visited
+                window.ContentLoader.preloadNextContent('topic', 'math');
+            }
+            
+            // Initialize caching for topic data
+            if (window.CacheUtils) {
+                // Preload common topics
+                window.CacheUtils.preloadTopic('Algebra', 'math');
+                window.CacheUtils.preloadTopic('Reading', 'english');
+            }
+            
+            // Show loading overlay
+            if (window.Loaders) {
+                Loaders.showLoading('Loading Dashboard', 'Getting your progress ready');
+            }
+            
+            // Check if the daily question has been completed
+            checkDailyQuestion();
+            
+            // Prefetch pages likely to be visited
+            prefetchLikelyPages();
+        });
+        
+        // Prefetch pages that are likely to be visited next
+        function prefetchLikelyPages() {
+            const pagesToPrefetch = [
+                'topics.html',
+                'practice.html',
+                'profile.html'
+            ];
+            
+            // Create a hidden container for prefetch links
+            const prefetchContainer = document.createElement('div');
+            prefetchContainer.style.display = 'none';
+            document.body.appendChild(prefetchContainer);
+            
+            // Add prefetch links
+            pagesToPrefetch.forEach(page => {
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = page;
+                prefetchContainer.appendChild(link);
+            });
+        }
+        
+        function checkDailyQuestion() {
+            // Get today's date
+            const today = new Date().toISOString().split('T')[0];
+            
+            // Get daily data from localStorage
+            const dailyData = JSON.parse(localStorage.getItem('satCrackDailyData')) || { 
+                lastQuestionDate: '', 
+                completed: false 
+            };
+            
+            // If it's a new day or the daily question hasn't been completed, redirect to daily.html
+            if (dailyData.lastQuestionDate !== today || !dailyData.completed) {
+                // Hide loading overlay and redirect
+                if (window.Loaders) {
+                    Loaders.hideLoading();
+                } else {
+                    document.getElementById('loading-overlay').classList.add('hidden');
+                }
+                window.location.href = 'daily.html';
+            } else {
+                // Daily question already completed, continue loading the app
+                setTimeout(() => {
+                    if (window.Loaders) {
+                        Loaders.hideLoading();
+                    } else {
+                        document.getElementById('loading-overlay').classList.add('hidden');
+                    }
+                }, 300); // Reduced from 500ms to 300ms for faster display
+            }
+        }
+        
+        // Register Service Worker with improved caching strategy
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/SAT_Crack/sw.js')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    
+                    // Force update of service worker on each page load to ensure latest cache
+                    registration.update();
+                })
+                .catch(function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+    
+    <!-- Load non-critical scripts at the end -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="js/app.js" defer></script>
+</body>
+</html>

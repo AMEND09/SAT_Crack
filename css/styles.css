@@ -1,0 +1,240 @@
+/* Custom Styles for OpenSAT App */
+body {
+    font-family: 'Quicksand', sans-serif;
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbars but allow scrolling */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Topic cards animations */
+.topic-card {
+    transition: transform 0.2s ease;
+}
+
+.topic-card:active {
+    transform: scale(0.98);
+}
+
+/* Answer choice buttons */
+.answer-btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.answer-btn:active {
+    transform: scale(0.98);
+}
+
+.answer-btn.correct-answer {
+    background-color: #10b981;
+    color: white;
+    border-color: #059669;
+}
+
+.answer-btn.incorrect-answer {
+    background-color: #ef4444;
+    color: white;
+    border-color: #dc2626;
+}
+
+.answer-btn.selected-answer {
+    background-color: #8b5cf6;
+    color: white;
+    border-color: #7c3aed;
+}
+
+/* Disable pointer events for locked buttons */
+.pointer-events-none {
+    pointer-events: none;
+}
+
+/* Style for disabled answer buttons */
+.answer-btn:disabled {
+    opacity: 0.8;
+}
+
+/* Style for buttons after answer is checked */
+.answer-btn.locked {
+    cursor: not-allowed;
+}
+
+/* Pulse animation for correct answers */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+.pulse-animation {
+    animation: pulse 1.5s infinite;
+}
+
+/* Red pulse animation for incorrect answers */
+@keyframes redPulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.red-pulse {
+    animation: redPulse 1.5s infinite;
+}
+
+/* Shake animation for incorrect answers */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    50% { transform: translateX(8px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+/* Highlight effect for important elements */
+.highlight {
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #8b5cf6;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.highlight:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+}
+
+/* Topic badges */
+.topic-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+}
+
+/* Custom scrollbar for desktop */
+@media (min-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #c4b5fd;
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #a78bfa;
+    }
+}
+
+/* Toast notifications */
+.toast-message {
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 90%;
+}
+
+/* Error highlight for incorrect answers */
+.error-highlight {
+    position: relative;
+}
+
+.error-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ef4444;
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Level up animation */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.animate-bounce {
+    animation: bounce 1s ease infinite;
+}
+
+/* Timer animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.animate-pulse {
+    animation: pulse 1s ease infinite;
+}
+
+/* XP Bar transition */
+#xp-bar {
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Score Predictor Styles */
+#domain-tabs button.active {
+    border-bottom-color: #6366f1;
+    color: #6366f1;
+}
+
+#domains-content > div:not(.active) {
+    display: none;
+}
+
+/* Transition effects for score updates */
+#total-predicted-score, 
+#math-predicted-score, 
+#english-predicted-score {
+    transition: color 0.3s ease;
+}
+
+#total-predicted-score:hover, 
+#math-predicted-score:hover, 
+#english-predicted-score:hover {
+    color: #4f46e5;
+}

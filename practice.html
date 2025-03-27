@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Crack - Practice</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <script src="js/loaders.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="js/katex-utils.js"></script>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 min-h-screen pb-20">
+    <!-- Quiz Header -->
+    <header class="bg-white shadow-md px-4 py-3 fixed top-0 w-full z-10">
+        <div class="flex items-center justify-between">
+            <a href="#" id="close-quiz" class="text-gray-700">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </a>
+            <div class="flex items-center">
+                <div class="mr-4 text-sm">
+                    <span id="user-level" class="font-semibold text-purple-700">Level 1</span>
+                </div>
+                <div class="px-2 py-1 bg-red-100 text-red-800 rounded-lg flex items-center">
+                    <span class="text-red-500 mr-1">❤️</span>
+                    <span id="lives-counter">3</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Level progress bar -->
+        <div class="mt-2 h-1 bg-gray-200 rounded-full">
+            <div id="xp-bar" class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-500 ease-in-out" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-500 mt-1">
+            <span id="xp-text">0/100 XP</span>
+            <span id="question-progress">1/10</span>
+        </div>
+    </header>
+
+    <main class="container mx-auto pt-24 pb-20 px-4">
+        <!-- Timer display -->
+        <div class="bg-white rounded-lg shadow-md p-3 mb-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="mr-2">⏱️</span>
+                <span>Time Remaining:</span>
+            </div>
+            <span id="question-timer" class="font-mono text-gray-700">0:00</span>
+        </div>
+        
+        <!-- Question Container -->
+        <div id="question-container" class="mt-4 mb-3">
+            <div class="question-card bg-white rounded-xl shadow-md p-5 mb-4">
+                <h2 id="question-text" class="text-lg font-medium text-gray-800 mb-3">Loading question...</h2>
+                
+                <!-- Paragraph container -->
+                <div id="paragraph-container" class="bg-gray-50 p-3 rounded-lg mb-4 border-l-4 border-purple-400 hidden">
+                    <p id="paragraph-text" class="text-gray-700"></p>
+                </div>
+                
+                <!-- Image container -->
+                <div id="image-container" class="my-4 hidden">
+                    <img id="question-image" src="" alt="Question visual" class="rounded-lg w-full">
+                </div>
+                
+                <!-- Choices container -->
+                <div id="choices-container" class="space-y-3">
+                    <!-- Will be populated with answer choices by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-between items-center mb-4">
+            <button id="hint-btn" class="flex items-center text-gray-600 text-sm bg-white px-3 py-2 rounded-lg shadow">
+                <span class="text-amber-400 mr-2">💡</span> Hint
+            </button>
+            <button id="check-btn" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-2 rounded-lg shadow disabled:opacity-50">
+                Check
+            </button>
+        </div>
+
+        <!-- Explanation -->
+        <div id="explanation-container" class="bg-white rounded-xl shadow-md p-4 hidden">
+            <div class="flex items-center mb-3">
+                <div id="result-icon" class="w-8 h-8 rounded-full flex items-center justify-center mr-2">
+                    <!-- Will be populated with emoji by JS -->
+                </div>
+                <h3 id="result-text" class="text-lg font-semibold"></h3>
+            </div>
+            <p id="explanation-text" class="text-sm text-gray-700"></p>
+            <button id="continue-btn" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-lg mt-4">
+                Continue
+            </button>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-600 mb-4"></div>
+            <p class="font-semibold text-purple-600">Loading Questions...</p>
+            <p class="text-sm text-gray-500 mt-2">Getting your challenge ready</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make sure lucide is defined before trying to call createIcons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.warn('Lucide icons library not loaded properly');
+            }
+        });
+    </script>
+    <script src="js/practice.js"></script>
+</body>
+</html>

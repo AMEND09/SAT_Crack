@@ -1,0 +1,117 @@
+/**
+ * Loading animations and styles for OpenSAT
+ */
+
+/* Breathing animation for loading elements */
+@keyframes breathing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.breathing {
+  animation: breathing 2s ease-in-out infinite;
+}
+
+/* Fade-in animation for elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Cascading fade-in for multiple elements */
+.fade-in-cascade > * {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.fade-in-cascade > *:nth-child(1) { animation-delay: 0.1s; }
+.fade-in-cascade > *:nth-child(2) { animation-delay: 0.2s; }
+.fade-in-cascade > *:nth-child(3) { animation-delay: 0.3s; }
+.fade-in-cascade > *:nth-child(4) { animation-delay: 0.4s; }
+.fade-in-cascade > *:nth-child(5) { animation-delay: 0.5s; }
+.fade-in-cascade > *:nth-child(6) { animation-delay: 0.6s; }
+.fade-in-cascade > *:nth-child(7) { animation-delay: 0.7s; }
+.fade-in-cascade > *:nth-child(8) { animation-delay: 0.8s; }
+
+/* Skeleton loading placeholders */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(226, 232, 240, 0.8) 25%,
+    rgba(237, 242, 247, 0.9) 50%,
+    rgba(226, 232, 240, 0.8) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Loading overlay transitions */
+.loading-overlay {
+  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Spinner animation */
+.spinner {
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.25rem solid rgba(203, 213, 224, 0.3);
+  border-top-color: #8a5cf6;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dots typing animation */
+.dots-loader:after {
+  content: '.';
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60% { content: '...'; }
+  80%, 100% { content: ''; }
+}

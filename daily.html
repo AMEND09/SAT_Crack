@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Crack - Daily Question</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8a5cf6">
+    <meta name="description" content="Daily SAT practice question">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/loading.css">
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="js/loaders.js"></script>
+    <script src="js/domains.js"></script>
+    <script src="js/cache-utils.js"></script>
+    <script src="js/katex-utils.js"></script>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 min-h-screen flex flex-col">
+    <div class="flex-grow flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative overflow-hidden">
+            <!-- Header -->
+            <div class="text-center mb-6">
+                <h1 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">Daily Question</h1>
+                <p class="text-gray-500 text-sm mt-1">Solve today's question to continue</p>
+                <div class="mt-2 flex justify-center items-center">
+                    <span class="text-amber-500 mr-2">🔥</span>
+                    <span id="streak-count" class="font-semibold">0</span>
+                    <span class="text-gray-400 mx-2">•</span>
+                    <span id="date-display" class="text-gray-500 text-sm"></span>
+                </div>
+            </div>
+            
+            <!-- Question Card -->
+            <div id="question-container" class="mb-6 fade-in-cascade">
+                <!-- Will be populated with question content -->
+            </div>
+            
+            <!-- Answers will be inserted here -->
+            <div id="choices-container" class="space-y-3 mb-6 fade-in-cascade">
+                <!-- Will be populated with answer choices -->
+            </div>
+            
+            <button id="submit-btn" class="w-full py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-500 opacity-50" disabled>
+                Submit Answer
+            </button>
+            
+            <!-- Skip button (only shown if not first time today) -->
+            <div id="skip-container" class="mt-3 text-center hidden">
+                <button id="skip-btn" class="text-gray-500 text-sm hover:text-gray-700">
+                    I'll solve this later ↗️
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result modal (hidden by default) -->
+    <div id="result-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 mx-4">
+            <div id="result-content" class="text-center">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            
+            <button id="continue-btn" class="w-full py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-500 mt-4">
+                Continue to App
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/SAT_Crack/sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+        
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+    <script src="js/daily.js"></script>
+</body>
+</html>

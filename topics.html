@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Crack - Topics</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md px-4 py-3 fixed top-0 w-full z-10">
+        <div class="flex items-center">
+            <a href="index.html" class="mr-4">
+                <i data-lucide="arrow-left" class="w-5 h-5 text-gray-700"></i>
+            </a>
+            <h1 class="text-lg font-bold text-gray-800" id="section-title">Topics</h1>
+        </div>
+    </nav>
+
+    <main class="container mx-auto pt-20 pb-24 px-4">
+        <!-- Section Tabs -->
+        <div id="section-tabs" class="flex mb-6 rounded-lg overflow-hidden shadow-sm">
+            <button data-section="math" class="flex-1 py-2 text-center bg-purple-100 text-purple-800 font-medium">
+                Math
+            </button>
+            <button data-section="english" class="flex-1 py-2 text-center bg-gray-100 text-gray-600">
+                English
+            </button>
+        </div>
+        
+        <!-- Math Topics -->
+        <div id="math-topics" class="topic-section">
+            <div class="mb-4">
+                <span class="inline-block bg-blue-100 text-blue-800 rounded-full px-3 py-1 text-sm font-medium">
+                    Math Section
+                </span>
+            </div>
+            
+            <div class="grid gap-4">
+                <a href="practice.html?topic=algebra" class="bg-white rounded-lg shadow-md p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-3">
+                                <span>📐</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Algebra</h3>
+                                <p class="text-xs text-gray-500">Equations, inequalities, and functions</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-blue-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 h-1.5 bg-gray-200 rounded-full">
+                        <div class="h-full bg-blue-500 rounded-full" style="width: 32%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>32% complete</span>
+                        <span class="flex items-center"><i data-lucide="function" class="w-3 h-3 mr-1"></i> 16/50 questions</span>
+                    </div>
+                </a>
+
+                <a href="practice.html?topic=problem-solving" class="bg-white rounded-lg shadow-md p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mr-3">
+                                <span>📊</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Problem Solving & Data Analysis</h3>
+                                <p class="text-xs text-gray-500">Statistics, ratios, and data interpretation</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-purple-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 h-1.5 bg-gray-200 rounded-full">
+                        <div class="h-full bg-purple-500 rounded-full" style="width: 25%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>25% complete</span>
+                        <span class="flex items-center"><i data-lucide="bar-chart" class="w-3 h-3 mr-1"></i> 10/40 questions</span>
+                    </div>
+                </a>
+
+                <a href="practice.html?topic=advanced-math" class="bg-white rounded-lg shadow-md p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 mr-3">
+                                <span>➗</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Advanced Math</h3>
+                                <p class="text-xs text-gray-500">Quadratics, polynomials, and complex numbers</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-pink-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 h-1.5 bg-gray-200 rounded-full">
+                        <div class="h-full bg-pink-500 rounded-full" style="width: 15%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>15% complete</span>
+                        <span class="flex items-center"><i data-lucide="infinity" class="w-3 h-3 mr-1"></i> 6/40 questions</span>
+                    </div>
+                </a>
+
+                <a href="practice.html?topic=geometry" class="bg-white rounded-lg shadow-md p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 mr-3">
+                                <span>📏</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Geometry & Trigonometry</h3>
+                                <p class="text-xs text-gray-500">Shapes, angles, and trigonometric functions</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-indigo-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 h-1.5 bg-gray-200 rounded-full">
+                        <div class="h-full bg-indigo-500 rounded-full" style="width: 8%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>8% complete</span>
+                        <span class="flex items-center"><i data-lucide="circle" class="w-3 h-3 mr-1"></i> 2/25 questions</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- English Topics -->
+        <div id="english-topics" class="topic-section hidden">
+            <div class="mb-4">
+                <span class="inline-block bg-green-100 text-green-800 rounded-full px-3 py-1 text-sm font-medium">
+                    English Section
+                </span>
+            </div>
+            
+            <div class="grid gap-4">
+                <a href="practice.html?topic=reading" class="bg-white rounded-lg shadow-md p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 mr-3">
+                                <span>📚</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Information & Ideas</h3>
+                                <p class="text-xs text-gray-500">Reading comprehension and analysis</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-green-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 h-1.5 bg-gray-200 rounded-full">
+                        <div class="h-full bg-green-500 rounded-full" style="width: 45%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>45% complete</span>
+                        <span class="flex items-center"><i data-lucide="book-open" class="w-3 h-3 mr-1"></i> 18/40 questions</span>
+                    </div>
+                </a>
+
+                <a href="practice.html?topic=craft" class="bg-white rounded-lg shadow-md p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 mr-3">
+                                <span>🔍</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Craft & Structure</h3>
+                                <p class="text-xs text-gray-500">Text organization and rhetorical analysis</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-teal-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 h-1.5 bg-gray-200 rounded-full">
+                        <div class="h-full bg-teal-500 rounded-full" style="width: 22%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>22% complete</span>
+                        <span class="flex items-center"><i data-lucide="search" class="w-3 h-3 mr-1"></i> 8/35 questions</span>
+                    </div>
+                </a>
+
+                <a href="practice.html?topic=writing" class="bg-white rounded-lg shadow-md p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 mr-3">
+                                <span>✏️</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Expression of Ideas</h3>
+                                <p class="text-xs text-gray-500">Development, organization, and effective language use</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-amber-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 h-1.5 bg-gray-200 rounded-full">
+                        <div class="h-full bg-amber-500 rounded-full" style="width: 18%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>18% complete</span>
+                        <span class="flex items-center"><i data-lucide="pen-tool" class="w-3 h-3 mr-1"></i> 9/50 questions</span>
+                    </div>
+                </a>
+
+                <a href="practice.html?topic=grammar" class="bg-white rounded-lg shadow-md p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-3">
+                                <span>📝</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Standard English Conventions</h3>
+                                <p class="text-xs text-gray-500">Grammar, usage, and punctuation</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-blue-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 h-1.5 bg-gray-200 rounded-full">
+                        <div class="h-full bg-blue-500 rounded-full" style="width: 22%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                        <span>22% complete</span>
+                        <span class="flex items-center"><i data-lucide="edit-3" class="w-3 h-3 mr-1"></i> 8/35 questions</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bg-white shadow-lg px-4 py-3 fixed bottom-0 w-full flex justify-around items-center">
+        <a href="index.html" class="flex flex-col items-center text-gray-500">
+            <span class="text-lg">🏠</span>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+        <a href="topics.html" class="flex flex-col items-center text-purple-600">
+            <span class="text-lg">📚</span>
+            <span class="text-xs mt-1">Topics</span>
+        </a>
+        <a href="practice.html" class="flex flex-col items-center text-gray-500">
+            <span class="text-lg">🎓</span>
+            <span class="text-xs mt-1">Practice</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-500">
+            <span class="text-lg">👤</span>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Loading indicator -->
+    <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-600 mb-4"></div>
+            <p class="font-semibold text-purple-600">Loading Topics...</p>
+            <p class="text-sm text-gray-500 mt-2">Getting your progress ready</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make sure lucide is defined before calling createIcons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.warn('Lucide icons library not loaded properly');
+            }
+            
+            // Hide loading overlay after a short delay
+            setTimeout(() => {
+                document.getElementById('loading-overlay').classList.add('opacity-0');
+                setTimeout(() => {
+                    document.getElementById('loading-overlay').classList.add('hidden');
+                }, 500);
+            }, 800);
+        });
+    </script>
+    <script src="js/topics.js"></script>
+</body>
+</html>
